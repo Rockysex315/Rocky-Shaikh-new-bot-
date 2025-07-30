@@ -1,24 +1,33 @@
-const axios = require("axios");
-const request = require("request");
-const fs = require("fs-extra");
-const moment = require("moment-timezone");
-
 module.exports.config = {
-    name: "Boss",
+    name: "admin",
     version: "1.0.0",
-    hasPermssion: 0,
-    credits: "ULLASH", //don't change my credit 
-    description: "Show Owner Info",
-    commandCategory: "info",
+    permission: 0,
+    credits: "ULLASH",//don't change my credit
+    prefix: true,
+    description: "",
+    category: "prefix",
     usages: "",
-    cooldowns: 5
+    cooldowns: 5,
+    dependencies: 
+	{
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
-
-module.exports.run = async function({ api, event }) {
-    var time = moment().tz("Asia/Dhaka").format("DD/MM/YYYY hh:mm:ss A");
-
-    var callback = () => api.sendMessage({
-        body: `
+module.exports.run = async function({ api,event,args,client,Users,Threads,__GLOBAL,Currencies }) {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+const time = process.uptime(),
+		hours = Math.floor(time / (60 * 60)),
+		minutes = Math.floor((time % (60 * 60)) / 60),
+		seconds = Math.floor(time % 60);
+const moment = require("moment-timezone");
+var juswa = moment.tz("Asia/Dhaka").format("『D/MM/YYYY』 【hh:mm:ss】");
+  
+var callback = () => api.sendMessage({body:`
+--------------------------------------------
 🌺🍒🐰❀𝐀𝐃𝐌𝐈𝐍 𝐀𝐍𝐃 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍💝🐰🍒 
 
 ╔════•|      ✿      |•════╗
@@ -27,7 +36,7 @@ module.exports.run = async function({ api, event }) {
 
 ________________________________________
 
-💠𝐁𝐎𝐓 𝐍𝐀𝐌𝐄💠 :  𝐑𝐎𝐂𝐊𝐘 S SONA
+💠𝐁𝐎𝐓 𝐍𝐀𝐌𝐄💠 : ─꯭─⃝͎̽𓆩𝐑𝐎𝐂𝐊𝐘 𝐀𝐑 𝐁𝐎𝐓‣᭄𓆪___//😘😇😈🩵🪽
 
 🌼𝐁𝐎𝐓 𝐀𝐃𝐌𝐈𝐍🌼 : 『😽👉  𝐃𝐉 𝐑𝐎𝐂𝐊𝐘 👈😽』
 
@@ -45,31 +54,25 @@ ________________________________________
 
 _____________🅲🅾🅽🆃🅰🅲🆃_____________
 
-💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❷) https://www.facebook.com/profile.php?id=61564434359130
+💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❶)💥 : https://www.facebook.com/profile.php?id=61564434359130
 
-💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❷)💥 : https://www.facebook.com/pyrmn
+💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❷)💥 : https://www.facebook.com/profile.php?id=100089930390139
 
 ✴️𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗✴️ : /
 
-❇️𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑✳ ※※※※ ❮𝐌𝐒❯ 𝐑𝐎𝐂𝐊𝐘❯ 父︻दु/⃦̸̸̵̵͇̿̿̿̿Ω̵̵͇̿̿๏ـــــــــــــــــــــــــــــــــــــــــــ๏๏๏⸙➊②➌𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺』 《𝐈𝐃‣⃟ 𝐏𝐘ɑ͜͡𝐑𓆪𒄬‣༑༑⃝𝐌๏н͜ɑ͜͡ßßɑ͜͡𝐓⸙ 𝐑ɑ͜͡ƞ𝐃ɪ̽͜𓆪»𝐑๏ƞɑ͜͡𑁍 𒄬‣𝐅ɪ̽͜ƞɠɼs͜͡ ⃝𝐊ɼɑ͜͡༑༑⃝ɑ͜͡𝐁н͜ɪ̽͜⸙𒄬‣ ⃝𝐌ɑ͜͡𝐊ɑ͜͡𓆪»𝐇ɑ͜͡ɪ̽} 
+❇️𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑✳️ : {🌻𝐌𝐑.𝐁𝐎𝐒𝐒 𝐃𝐉 𝐑𝐎𝐂𝐊𝐘 
+𝐕𝐈𝐑𝐓𝐔𝐀𝐋 𝐓𝐎𝐏 𝐅𝐌𝐙 𝐊𝐈𝐍𝐆
+𝐘𝐎𝐔'𝐑 𝐍𝐄𝐗𝐓 𝐕𝐀𝐓𝐀𝐑 𝐗𝐀𝐍'𝐒
+𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐌𝐀𝐒𝐓𝐄𝐑
+𝐈𝐍𝐃𝐈𝐀 𝐇𝐀𝐓𝐄𝐑𝐒
+𝐅𝐄𝐄𝐋 𝐓𝐇𝐄 𝐏𝐎𝐖𝐄𝐑 𝐎𝐅
+𝐘𝐎𝐔'𝐑 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐃𝐀𝐃🌻} 
 
 🌺𝐎𝐓𝐇𝐄𝐑 𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍🌺____________________
 
-𝐓𝐘𝐏𝐄 /𝐀𝐃𝐌𝐈𝐍  
-
-♻️➟ 𝐔𝐏𝐓𝐈𝐌𝐄 ♻️
-
-🔰𝐓𝐎𝐃𝐀𝐘 𝐈𝐒 𝐓𝐈𝐌𝐄🔰 : 
-
-🐰🍒𝐁𝐎𝐓 𝐈𝐒 𝐑𝐔𝐍𝐍𝐈𝐍𝐆🍒🐰
-
-💚🌺𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐔𝐒𝐈𝐍𝐆🌺💚 ─꯭─⃝͎̽𓆩 Rocky s sona‣᭄𓆪___//😘😇😈🩵🪽 『😽🖤🌺』
-
-        `,
-        attachment: fs.createReadStream(__dirname + "/cache/1.png")
-    }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"));
-  
-    return request(encodeURI(`https://www.facebook.com/profile.php?id=61564434359130`/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`))
-        .pipe(fs.createWriteStream(__dirname + '/cache/1.png'))
-        .on('close', () => callback());
-};
+💚🌺𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐔𝐒𝐈𝐍𝐆🌺💚 ─꯭─⃝͎̽𓆩𝐑𝐎𝐂𝐊𝐘 𝐀𝐑 𝐁𝐎𝐓‣᭄𓆪___//😘😇😈🩵🪽 『😽🖤🌺』
+𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐋𝐢𝐧𝐤 : https://www.facebook.com/profile.php?id=61564434359130`,attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
+    fs.unlinkSync(__dirname + "/cache/1.png"));  
+      return request(encodeURI(`https://i.postimg.cc/rsXBXNBB/Messenger-creation-1-DD2054-A-0203-4739-87-B5-2-C4794783-C75.jpg`)).pipe(
+fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
+   };
