@@ -6,7 +6,7 @@ module.exports.config = {
 	credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
 	description: "Admin Config",
 	commandCategory: "Admin",
-	usages: "Admin",
+	usages: "0admin",
     cooldowns: 2,
     dependencies: {
         "fs-extra": ""
