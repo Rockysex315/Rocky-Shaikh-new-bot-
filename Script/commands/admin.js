@@ -1,12 +1,12 @@
 module.exports.config = {
-    name: "admin",
+    name: "adminbot",
     version: "1.0.0",
     permission: 0,
     credits: "ULLASH",//don't change my credit
     prefix: true,
     description: "",
     category: "prefix",
-    usages: "",
+    usages: "adminbot",
     cooldowns: 5,
     dependencies: 
 	{
