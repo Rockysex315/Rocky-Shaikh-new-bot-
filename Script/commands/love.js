@@ -19,20 +19,20 @@ module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currenc
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
-   var hi = ["•┄┅════❁🌺❁════┅┄•\n\n - তুমি ভালোবাসা মানে কি বুজ..??\n - আমি তো বুজি বিয়ের পর বউ এর সাথে হালাল ভালোবাসা বা পবিত্র সম্পর্ক কে...🌸🙈😍\n\n•┄┅════❁🌺❁════┅┄•"];
+   var hi = ["•┄┅════❁🌺❁════┅┄•\n\n - তুমি ভালোবাসা মানে কি বুজ..??\n - ভালোবাসা বলে কিছু হয় না সব চুদার ধন্দা...🌸🙈😍\n\n•┄┅════❁🌺❁════┅┄•"];
   var know = hi[Math.floor(Math.random() * hi.length)];
   var link = [
-"https://drive.google.com/uc?id=1QYWcqg1ijPhtNVlIzDqluKft-jDG22cW",
-"https://drive.google.com/uc?id1Qcmn9WNHtm_JWQOpEZ1qExa5SffoEjji",
-"https://drive.google.com/uc?id=1Q9rvj5eJblhxEBznqGELP3DRLywzOGA6",
-"https://drive.google.com/uc?id=1Q9PfN8ZWd8W7YZGAqSxmXVedj-5zN42_",
-"https://drive.google.com/uc?id=1QWCNSSo_zbZF3Ypfl9rme50_Vgtc1Uhb",
-"https://drive.google.com/uc?id=1QOXQydrqA0RV3z_nD4s4OYuxW8hmpDGF",
-"https://drive.google.com/uc?id=1QPLCEvrfSALGdZ8pNjAEvmeor4AdB72G",
-"https://drive.google.com/uc?id=1QLoecfZzW5UJSbuiJKs0ARudeToKTn11",
-"https://drive.google.com/uc?id=1QV8coP5g26qyJGB-rljHeWYwSwnsQuSu",
-"https://drive.google.com/uc?id=1QTWryt4tlhIMa9NJkOlHHdNdBiodFhc9",
-"https://drive.google.com/uc?id=1QFyKjvumAPH9FlLweTMRN2pWDEfD5HN4",
+"https://i.imgur.com/yq80EIe.mp4",
+"https://i.imgur.com/lNN3F0p.mp4",
+"https://i.imgur.com/XpwJ7DV.mp4",
+"https://i.imgur.com/dS5exJp.mp4",
+"https://i.imgur.com/JHSZgXh.mp4",
+"https://i.imgur.com/nLSZXW4.mp4",
+"https://i.imgur.com/J5zk6w5.mp4",
+"https://i.imgur.com/TjoLuAM.mp4",
+"https://i.imgur.com/Ow4z3qc.mp4",
+"https://i.imgur.com/RhkhACv.mp4",
+"https://i.imgur.com/YotKtqe.mp4",
 
 ];
      var callback = () => api.sendMessage({body:` ${know} `,attachment: fs.createReadStream(__dirname + "/cache/15.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/15.mp4"));    
