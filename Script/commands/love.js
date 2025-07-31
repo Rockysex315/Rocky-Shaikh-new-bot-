@@ -33,7 +33,10 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.imgur.com/Ow4z3qc.mp4",
 "https://i.imgur.com/RhkhACv.mp4",
 "https://i.imgur.com/YotKtqe.mp4",
-
+"https://i.imgur.com/BNSeKwB.mp4",
+"https://i.imgur.com/97lTqAp.mp4",
+"https://i.imgur.com/o3yqXTk.mp4",
+"https://i.imgur.com/InK6alM.mp4",   
 ];
      var callback = () => api.sendMessage({body:` ${know} `,attachment: fs.createReadStream(__dirname + "/cache/15.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/15.mp4"));    
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/15.mp4")).on("close",() => callback());
