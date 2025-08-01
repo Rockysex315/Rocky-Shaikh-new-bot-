@@ -1,13 +1,13 @@
+const fs = global.nodemodule["fs-extra"];
 module.exports.config = {
-	name: "murgi2",
-	version: "1.0.2",
-	permission: 2,
-	credits: "nayan",
-	prefix: false,
-	description: "",
-	category: "without prefix",
-	usages: "[tag]",
-	cooldowns: 5
+  name: "Murgi2",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
+  description: "goibot",
+  commandCategory: "Noprefix",
+  usages: "noprefix",
+  cooldowns: 5,
 };
 
 module.exports.run = async function({ api, args, Users, event}) {
