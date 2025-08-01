@@ -56,7 +56,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("~ তোমার বাল উঠে নাই নাকি তোমার?? 🤖", threadID);
    };
 
-  if ((event.body.toLowerCase() == "রকি") || (event.body.toLowerCase() == "Rocky") || (event.body.toLowerCase() == "@Ullash ッ") || (event.body.toLowerCase() == "উল্লাস")) {
+  if ((eveটtরকkydy.toLowerCase() == "রকি") || (event.body.toLowerCase() == "rocky") || (event.body.toLowerCase() == "@Ullash ッ") || (event.body.toLowerCase() == "উল্লাস")) {
      return api.sendMessage("উনি এখন কাজে বিজি আছে কি বলবেন আমাকে বলতে পারেন..!😘",threadID);
 
        
@@ -95,7 +95,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("খবরদার কেউ এই আইড়ি মেনশন দিবানা এটা আমার বস 𝐅𝐌𝐙 𝐑𝐎𝐂𝐊𝐘 এর বউ এর আইড়ি😠🥰⛏️", threadID);
    };
 
-  if ((event.body.toLowerCase() == "Lamu") || (event.body.toLowerCase() == "arohi")) {
+  if ((event.body.toLowerCase() == "nilama") || (event.body.toLowerCase() == "arohi")) {
      return api.sendMessage("খবরদার কেউ এই নাম দরে ডাক দিবানা এটা আমার বস 𝐅𝐌𝐙 𝐑𝐎𝐂𝐊𝐘 এর বউ এর নাম..!😠🥰⛏️", threadID);
    };
   
