@@ -1,199 +1,79 @@
-module.exports.config = {
- name: "info",
- version: "1.2.6",
- hasPermssion: 0,
- credits: "Shaon Ahmed",
- description: "info bot owner",
- commandCategory: "For users",
- hide:true,
- usages: "",
- cooldowns: 5,
+name: "info",
+version: "1.2.6",
+hasPermssion: 0,
+credits: "Shaon Ahmed",
+description: "info bot owner",
+commandCategory: "For users",
+hide:true,
+usages: "",
+cooldowns: 5,
+
+ 
+    dependencies: 
+	{
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
+module.exports.run = async function({ api,event,args,client,Users,Threads,__GLOBAL,Currencies }) {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+const time = process.uptime(),
+		hours = Math.floor(time / (60 * 60)),
+		minutes = Math.floor((time % (60 * 60)) / 60),
+		seconds = Math.floor(time % 60);
+const moment = require("moment-timezone");
+var juswa = moment.tz("Asia/Dhaka").format("『D/MM/YYYY』 【hh:mm:ss】");
+  
+var callback = () => api.sendMessage({body:`
+--------------------------------------------
+🌺🍒🐰❀𝐀𝐃𝐌𝐈𝐍 𝐀𝐍𝐃 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍💝🐰🍒 
+
+╔════•|      ✿      |•════╗
+💐আ্ঁস্ঁসা্ঁলা্ঁমু্ঁ💚আ্ঁলা্ঁই্ঁকু্ঁম্ঁ💐
+╚════•|      ✿      |•════╝
+
+________________________________________
+
+💠𝐁𝐎𝐓 𝐍𝐀𝐌𝐄💠 : ─꯭─⃝͎̽𓆩𝐑𝐎𝐂𝐊𝐘 𝐀𝐑 𝐁𝐎𝐓‣᭄𓆪___//😘😇😈🩵🪽
+
+🌼𝐁𝐎𝐓 𝐀𝐃𝐌𝐈𝐍🌼 : 『😽👉  𝐃𝐉 𝐑𝐎𝐂𝐊𝐘 👈😽』
+
+🔥𝐁𝐈𝐎 𝐀𝐃𝐌𝐈𝐍🔥 : [ ⊱༅༎😽💚༅༎⊱
 
 
-module.exports.run = async function ({ api, event, args, Users, permssion, getText ,Threads}) {
- const content = args.slice(1, args.length);
- const { threadID, messageID, mentions } = event;
- const { configPath } = global.client;
- const { ADMINBOT } = global.config;
- const { NDH } = global.config;
- const { userName } = global.data;
- const request = global.nodemodule["request"];
- const fs = global.nodemodule["fs-extra"];
- const { writeFileSync } = global.nodemodule["fs-extra"];
- const mention = Object.keys(mentions);
- delete require.cache[require.resolve(configPath)];
- var config = require(configPath);
- const listAdmin = ADMINBOT || config.ADMINBOT || [];
- const listNDH = NDH || config.NDH || [];
- {
- const PREFIX = config.PREFIX;
- const namebot = config.BOTNAME;
- const { commands } = global.client;
- const threadSetting = (await Threads.getData(String(event.threadID))).data || 
- {};
- const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX 
- : global.config.PREFIX;
- const dateNow = Date.now();
- const time = process.uptime(),
- hours = Math.floor(time / (60 * 60)),
- minutes = Math.floor((time % (60 * 60)) / 60),
- seconds = Math.floor(time % 60);
- const data = [
- "Bạn không thể tìm được lệnh admin tại 'help' của MintBot",
- "Đừng mong chờ gì từ MintBot.",
- "Cái đoạn này á? Của SpermBot.",
- "Nếu muốn không lỗi lệnh thì hãy xài những lệnh có trong help vì những lệnh lỗi đã bị ẩn rồi.",
- "Đây là một con bot được các coder của MiraiProject nhúng tay vào.",
- "Muốn biết sinh nhật của Mint thì hãy xài 'birthday'.",
- "Cặc.",
- "Cút.",
- "Lồn.",
- "Bạn chưa biết.",
- "Bạn đã biết.",
- "Bạn sẽ biết.",
- "Không có gì là hoàn hảo, MintBot là ví dụ.",
- "Mirai dropped.",
- "MintBot là MiraiProject nhưng module là idea của SpermBot.",
- "Bạn không biết cách sử dụng MintBot? Đừng dùng nữa.",
- "Muốn chơi game? Qua bot khác mà chơi đây không rảnh",
- "MintBot có thể hiểu phụ nữ nhưng không thể có được họ.",
- "MintBot cân spam nhưng không có gì đáng để bạn spam."
- ];
- var link = [
- "https://i.imgur.com/gnAT3Ao.jpeg",
- "https://i.imgur.com/DRrNTHU.jpeg",
- "https://i.imgur.com/DRrNTHU.jpeg",
- "https://i.imgur.com/DRrNTHU.jpeg",
- "https://i.imgur.com/DRrNTHU.jpeg",
- ];
+-আমি ভদ্র, বেয়াদব দুটোই🥱✌️
 
- var i = 1;
- var msg = [];
- const moment = require("moment-timezone");
- const date = moment.tz("Asia/Dhaka").format("hh:mm:ss");
- for (const idAdmin of listAdmin) {
- if (parseInt(idAdmin)) {
- const name = await Users.getNameUser(idAdmin);
- msg.push(`${i++}/ ${name} - ${idAdmin}`);
- }
- }
- var msg1 = [];
- for (const idNDH of listNDH) {
- if (parseInt(idNDH)) {
- const name1 = (await Users.getData(idNDH)).name
- msg1.push(`${i++}/ ${name1} - ${idNDH}`);
- }
- }
- var callback = () => 
- api.sendMessage({ body: `====「 ${namebot} 」====\n» Prefix system: ${PREFIX}\n» Prefix box: ${prefix}\n» Modules: ${commands.size}\n» Ping: ${Date.now() - dateNow}ms\n──────────────\n======「 ADMIN 」 ======\n${msg.join("\n")}\n──────────────\nBot has been working for ${hours} hour(s) ${minutes} minute(s) ${seconds} second(s)\n\n» Total users: ${global.data.allUserID.length} \n» Total threads: ${global.data.allThreadID.length}\n──────────────\n[thanks for using bot!!]`, attachment: fs.createReadStream(__dirname + "/cache/kensu.jpg"), }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/kensu.jpg"));
- return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/kensu.jpg")).on("close", () => callback()); 
- }
-}/**
- * @author Shaon Ahmed
- * @warn Do not edit code or edit credits
- */
-
-module.exports.config = {
- name: "info",
- version: "1.2.6",
- hasPermssion: 0,
- credits: "Shaon Ahmed",
- description: "🥰আসসালামু আলাইকুম 🥰",
- commandCategory: "For users",
- hide:true,
- usages: "",
- cooldowns: 5,
-};
+-তুমি যেটা ডি'জার্ভ করো, আমি সেটাই দেখাবো!🙂
 
 
-module.exports.run = async function ({ api, event, args, Users, permssion, getText ,Threads}) {
- const content = args.slice(1, args.length);
- const { threadID, messageID, mentions } = event;
- const { configPath } = global.client;
- const { ADMINBOT } = global.config;
- const { NDH } = global.config;
- const { userName } = global.data;
- const request = global.nodemodule["request"];
- const fs = global.nodemodule["fs-extra"];
- const { writeFileSync } = global.nodemodule["fs-extra"];
- const mention = Object.keys(mentions);
- delete require.cache[require.resolve(configPath)];
- var config = require(configPath);
- const listAdmin = ADMINBOT || config.ADMINBOT || [];
- const listNDH = NDH || config.NDH || [];
- {
- const PREFIX = config.PREFIX;
- const namebot = config.BOTNAME;
- const { commands } = global.client;
- const threadSetting = (await Threads.getData(String(event.threadID))).data || 
- {};
- const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX 
- : global.config.PREFIX;
- const dateNow = Date.now();
- const time = process.uptime(),
- hours = Math.floor(time / (60 * 60)),
- minutes = Math.floor((time % (60 * 60)) / 60),
- seconds = Math.floor(time % 60);
- const data = [
- "Bạn không thể tìm được lệnh admin tại 'help' của MintBot",
- "Đừng mong chờ gì từ MintBot.",
- "Cái đoạn này á? Của SpermBot.",
- "Nếu muốn không lỗi lệnh thì hãy xài những lệnh có trong help vì những lệnh lỗi đã bị ẩn rồi.",
- "Đây là một con bot được các coder của MiraiProject nhúng tay vào.",
- "Muốn biết sinh nhật của Mint thì hãy xài 'birthday'.",
- "Cặc.",
- "Cút.",
- "Lồn.",
- "Bạn chưa biết.",
- "Bạn đã biết.",
- "Bạn sẽ biết.",
- "Không có gì là hoàn hảo, MintBot là ví dụ.",
- "Mirai dropped.",
- "MintBot là MiraiProject nhưng module là idea của SpermBot.",
- "Bạn không biết cách sử dụng MintBot? Đừng dùng nữa.",
- "Muốn chơi game? Qua bot khác mà chơi đây không rảnh",
- "MintBot có thể hiểu phụ nữ nhưng không thể có được họ.",
- "MintBot cân spam nhưng không có gì đáng để bạn spam."
- ];
- var link = [
- "https://i.postimg.cc/QdgH08j6/Messenger-creation-C2-A39-DCF-A8-E7-4-FC7-8715-2559476-FEEF4.gif",
- "https://i.imgur.com/WXQIgMz.jpeg",
- "https://i.postimg.cc/QdgH08j6/Messenger-creation-C2-A39-DCF-A8-E7-4-FC7-8715-2559476-FEEF4.gif",
- "https://i.imgur.com/WXQIgMz.jpeg",
- "https://i.imgur.com/WXQIgMz.jpeg",
+⊱༅༎😽💚༅༎⊱ ]
 
- ]; 
- var i = 1;
- var msg = [];
- const moment = require("moment-timezone");
- const date = moment.tz("Asia/Dhaka").format("hh:mm:ss");
- for (const idAdmin of listAdmin) {
- if (parseInt(idAdmin)) {
- const name = await Users.getNameUser(idAdmin);
- msg.push(`${i++}/ ${name} - ${idAdmin}`);
- }
- }
- var msg1 = [];
- for (const idNDH of listNDH) {
- if (parseInt(idNDH)) {
- const name1 = (await Users.getData(idNDH)).name
- msg1.push(`${i++}/ ${name1} - ${idNDH}`);
- }
- }
- var callback = () => 
- api.sendMessage({ body: 
- `🍀----আসসালামু আলাইকুম----🍀
+🏠𝐀𝐃𝐃𝐑𝐄𝐒𝐒🏠 : 𝐈𝐍𝐃𝐈𝐀
 
-┏━━•❅•••❈•••❈•••❅•━━┓\n\n「 ${namebot} 」\n\n┗━━•❅•••❈•••❈•••❅•━━┛ \n\n______________________________\n\n↓↓_𝗥𝗢𝗕𝗢𝗧 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢_↓↓\n\n» 𝗣𝗿𝗲𝗳𝗶𝘅 𝘀𝘆𝘀𝘁𝗲𝗺: ${PREFIX}\n\n» 𝗣𝗿𝗲𝗳𝗶𝘅 𝗯𝗼𝘅: ${prefix}\n\n» 𝗧𝗼𝘁𝗮𝗹 𝗠𝗼𝗱𝘂𝗹𝗲𝘀: ${commands.size}\n\n» 𝗣𝗶𝗻𝗴: ${Date.now() - dateNow}ms\n______________________________\n\n ↓↓_𝗥𝗢𝗕𝗢𝗧 𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢_↓↓\n\n 
-𝗡𝗔𝗠𝗘 :>ROCKY 
+_____________🅲🅾🅽🆃🅰🅲🆃_____________
 
-𝗢𝘄𝗻𝗲𝗿 𝗜𝗱 𝗹𝗶𝗻𝗸: https://www.facebook.com/rocky.633251
+💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❶)💥 : https://www.facebook.com/profile.php?id=61564434359130
 
-𝗪𝗵𝗮𝘁𝘀𝗮𝗽𝗽☞912208**
+💥𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❷)💥 : https://www.facebook.com/profile.php?id=100089930390139
 
-______________________________\n\n----↓↓𝙍𝙤𝙗𝙤𝙩 𝙖𝙘𝙩𝙞𝙫𝙚 𝙩𝙞𝙢𝙚↓↓----\n\n ${hours} : ${minutes} : ${seconds} second(s)\n\n______________________________\n» 𝗧𝗢𝗧𝗔𝗟 𝗨𝗦𝗘𝗥𝗦: ${global.data.allUserID.length} \n\n» 𝗧𝗢𝗧𝗔𝗟 𝗚𝗥𝗢𝗨𝗣: ${global.data.allThreadID.length}\n______________________________\n\n thanks for using \n 𝐑𝐎𝐂𝐊𝐘 𝐒 𝐒𝐎𝐍𝐀 
-\n--------------------------------------------------\n\n☢️☣️⚠️`, attachment: fs.createReadStream(__dirname + "/gnAT3Ao.jpeg"), }, event.threadID, () => fs.unlinkSync(__dirname + "/gnAT3Ao.jpeg"));
- return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/gnAT3Ao.jpeg")).on("close", () => callback()); 
- }
-}
+✴️𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗✴️ : /
+
+❇️𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑✳️ : {🌻𝐌𝐑.𝐁𝐎𝐒𝐒 𝐃𝐉 𝐑𝐎𝐂𝐊𝐘 
+𝐕𝐈𝐑𝐓𝐔𝐀𝐋 𝐓𝐎𝐏 𝐅𝐌𝐙 𝐊𝐈𝐍𝐆
+𝐘𝐎𝐔'𝐑 𝐍𝐄𝐗𝐓 𝐕𝐀𝐓𝐀𝐑 𝐗𝐀𝐍'𝐒
+𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐌𝐀𝐒𝐓𝐄𝐑
+𝐈𝐍𝐃𝐈𝐀 𝐇𝐀𝐓𝐄𝐑𝐒
+𝐅𝐄𝐄𝐋 𝐓𝐇𝐄 𝐏𝐎𝐖𝐄𝐑 𝐎𝐅
+𝐘𝐎𝐔'𝐑 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐃𝐀𝐃🌻} 
+
+🌺𝐎𝐓𝐇𝐄𝐑 𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍🌺____________________
+
+💚🌺𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐔𝐒𝐈𝐍𝐆🌺💚 ─꯭─⃝͎̽𓆩𝐑𝐎𝐂𝐊𝐘 𝐀𝐑 𝐁𝐎𝐓‣᭄𓆪___//😘😇😈🩵🪽 『😽🖤🌺』
+𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐋𝐢𝐧𝐤 : https://www.facebook.com/profile.php?id=61564434359130`,attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
+    fs.unlinkSync(__dirname + "/cache/1.png"));  
+      return request(encodeURI(`https://i.postimg.cc/rsXBXNBB/Messenger-creation-1-DD2054-A-0203-4739-87-B5-2-C4794783-C75.jpg`)).pipe(
+fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
+   };
