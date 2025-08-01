@@ -1,12 +1,13 @@
+const fs = global.nodemodule["fs-extra"];
 module.exports.config = {
-    name: "admin",
-    version: "1.0.0",
-    hasPermssion: 0,
-    credits: "ULLASH", //don't change my credit 
-    description: "Show Owner Info",
-    commandCategory: "info",
-    usages: "",
-    cooldowns: 5
+  name: "admin",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
+  description: "goibot",
+  commandCategory: "Noprefix",
+  usages: "noprefix",
+  cooldowns: 5,
 	{
     "request":"",
     "fs-extra":"",
