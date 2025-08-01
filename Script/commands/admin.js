@@ -1,8 +1,3 @@
-const axios = require("axios");
-const request = require("request");
-const fs = require("fs-extra");
-const moment = require("moment-timezone");
-
 module.exports.config = {
     name: "admin",
     version: "1.0.0",
