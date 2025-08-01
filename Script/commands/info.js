@@ -5,10 +5,8 @@ credits: "Shaon Ahmed",
 description: "info bot owner",
 commandCategory: "For users",
 hide:true,
-usages: "",
+usages: "info",
 cooldowns: 5,
-
- 
     dependencies: 
 	{
     "request":"",
